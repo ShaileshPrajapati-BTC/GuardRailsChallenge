@@ -34,3 +34,15 @@ exports.delete = function (req, res) {
     return res.json({ success: true });
   });
 };
+
+// Get ScanResult
+exports.getFindings = function (req, res) {
+  ScanResult.findById(req.params.scan_result_id, function (err, scanResult) {
+    if (err)
+      res.send(err);
+    res.json({
+      success: true,
+      data: scanResult.findings
+    });
+  });
+};

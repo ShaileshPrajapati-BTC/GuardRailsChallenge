@@ -1,0 +1,35 @@
+.text-red{
+  color: red;
+  margin-top: 5px
+}
+
+.navbar{
+  margin-bottom: 30px
+}
+
+.add-scan-form{
+  .submit-btn{
+    margin-top: 20px
+  }
+}
+
+.spinner{
+  position: absolute;
+  top : 50%;
+  left: 50%
+}
+
+.btn{
+  width: 140px
+}
+
+table{
+  tbody{
+    td{
+      &.findings{
+        cursor: pointer
+      }
+    }   
+  }
+}
+

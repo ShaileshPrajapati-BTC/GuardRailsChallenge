@@ -2,18 +2,27 @@ import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
 } from "react-router-dom";
+import { Container } from 'react-bootstrap';
 import AddScanResult from './screens/addScanResult';
+import ScanResultList from './screens/scanResultList'
+import Findings from './screens/selectedScanResult'
+import NavBar from './components/navbar';
+import { ToastContainer } from 'react-toastify';
+import PublicRoute from './components/publicRoute'
 
-const Routes = () => {
+const Routes = (props) => {
   return (
     <Router>
-      <Switch>
-        <Route path="/">
-          <AddScanResult />
-        </Route>
-      </Switch>
+      <NavBar />
+      <Container>
+        <Switch>
+          <PublicRoute path="/" component={AddScanResult} exact />
+          <PublicRoute path="/scanresultlist" component={ScanResultList} exact />
+          <PublicRoute path="/scanresultlist/:id/findings" component={Findings} exact />
+        </Switch>
+        <ToastContainer />
+      </Container>
     </Router>
   );
 }

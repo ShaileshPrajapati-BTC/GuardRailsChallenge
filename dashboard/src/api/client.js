@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { toast } from 'react-toastify'
 
 const baseURL =
-  process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000';
+  process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001';
 
 const client = axios.create({
   baseURL,
@@ -30,8 +31,8 @@ client.interceptors.response.use(
   response => {
     const token = response.headers && response.headers.authorization;
     if (response.status === 200) {
-      if (response.data.error !== undefined) {
-        toastr.error(response.data.error)
+      if (!response.data.success) {
+        toast.error('Something went wrong. Please try again later.');
       }
     }
     if (token) {

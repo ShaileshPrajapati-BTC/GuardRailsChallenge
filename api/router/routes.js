@@ -6,6 +6,7 @@ router.route('/scanResults')
   .post(ScanResultController.new);
 
 router.route('/scanResults/:scan_result_id')
+  .get(ScanResultController.getFindings)
   .put(ScanResultController.update)
   .patch(ScanResultController.update)
   .delete(ScanResultController.delete);
