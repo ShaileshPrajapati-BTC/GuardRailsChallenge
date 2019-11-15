@@ -16,7 +16,7 @@ This repository contains the solution for the [Gurdrails  Challenge](https://git
 # Installation
 
 ```
-$ clone repo
+$ git clone https://github.com/ShaileshPrajapati-BTC/GuardRailsChallenge.git
 $ cd project_directory
 $ docker-compose build
 $ docker-compose up
