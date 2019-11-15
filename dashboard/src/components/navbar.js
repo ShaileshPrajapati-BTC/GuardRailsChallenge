@@ -11,7 +11,7 @@ const NavBar = (props) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link active={props.location.pathname === '/'} href="/">Add Scan Result</Nav.Link>
-            <Nav.Link active={props.location.pathname === '/scanresultlist'} href="/scanresultlist">Scan Results</Nav.Link>
+            <Nav.Link active={props.location.pathname === '/scan_results'} href="/scan_results">Scan Results</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

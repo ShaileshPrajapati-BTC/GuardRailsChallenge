@@ -32,7 +32,7 @@ const AddScanResult = (props) => {
           .then(result => {
             if (result.status === 200 && result.data.success === true) {
               toast.success('Scan result added successfully.');
-              props.history.push(`/scanresultlist`)
+              props.history.push(`/scan_results`)
             }
           })
       }}

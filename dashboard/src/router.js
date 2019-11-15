@@ -6,7 +6,7 @@ import {
 import { Container } from 'react-bootstrap';
 import AddScanResult from './screens/addScanResult';
 import ScanResultList from './screens/scanResultList'
-import Findings from './screens/selectedScanResult'
+import Findings from './screens/findings'
 import NavBar from './components/navbar';
 import { ToastContainer } from 'react-toastify';
 import PublicRoute from './components/publicRoute'
@@ -18,8 +18,8 @@ const Routes = (props) => {
       <Container>
         <Switch>
           <PublicRoute path="/" component={AddScanResult} exact />
-          <PublicRoute path="/scanresultlist" component={ScanResultList} exact />
-          <PublicRoute path="/scanresultlist/:id/findings" component={Findings} exact />
+          <PublicRoute path="/scan_results" component={ScanResultList} exact />
+          <PublicRoute path="/scan_results/:id/findings" component={Findings} exact />
         </Switch>
         <ToastContainer />
       </Container>

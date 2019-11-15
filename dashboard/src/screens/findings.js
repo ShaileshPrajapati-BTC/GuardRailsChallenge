@@ -31,7 +31,7 @@ const Findings = (props) => {
         </tr>
       </thead>
       <tbody>
-        {findings.length > 0 && findings.map(({ ruleId, metadata, location }, index) => {
+        {findings.length > 0 ? findings.map(({ ruleId, metadata, location }, index) => {
           return (
             <tr key={index}>
               <td>{ruleId}</td>
@@ -47,7 +47,10 @@ const Findings = (props) => {
               </td>
             </tr>
           )
-        })}
+        }) :
+          <tr>
+            <td colSpan={4} className="text-center" >No data available.</td>
+          </tr>}
       </tbody>
     </Table>
   )

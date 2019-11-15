@@ -35,8 +35,8 @@ const ScanResultList = (props) => {
         </tr>
       </thead>
       <tbody>
-        {results.length > 0 && results.map(({ _id, status, repositoryName, findings, queuedAt, scanningAt, finishedAt }) => {
-          const badgeCount = findings && findings.findings && findings.findings.length
+        {results.length > 0 ? results.map(({ _id, status, repositoryName, findings, queuedAt, scanningAt, finishedAt }) => {
+          const badgeCount = findings && findings.findings && findings.findings.length || false
           return (
             <tr key={_id} >
               <td>{_id}</td>
@@ -47,9 +47,9 @@ const ScanResultList = (props) => {
               </td>
               <td>{repositoryName}</td>
               <td
-                title="View findings"
+                title={badgeCount && "View findings"}
                 className={badgeCount && "findings"}
-                onClick={() => badgeCount && props.history.push(`/scanresultlist/${_id}/findings`)}>
+                onClick={() => badgeCount && props.history.push(`/scan_results/${_id}/findings`)}>
                 {badgeCount && <Badge pill variant="dark">
                   {badgeCount}
                 </Badge>}
@@ -59,7 +59,10 @@ const ScanResultList = (props) => {
               <td>{formatDateTime(finishedAt)}</td>
             </tr>
           )
-        })}
+        }) :
+          <tr>
+            <td colSpan={7} className="text-center" >No data available.</td>
+          </tr>}
       </tbody>
     </Table>
   )
