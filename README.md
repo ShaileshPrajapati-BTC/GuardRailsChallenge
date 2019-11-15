@@ -1,6 +1,6 @@
 # GurdRails Challenge
 
-this repository contains the solution for the [Gurdrails  Challenge](https://github.com/guardrailsio/full-stack-engineer-challenge)
+This repository contains the solution for the [Gurdrails  Challenge](https://github.com/guardrailsio/full-stack-engineer-challenge)
 
 ---
 # Technolgy Stack
@@ -23,5 +23,5 @@ $ docker-compose up
 ```
 # URLs
 
-- Frontend: on localhost:3000
+- Frontend: localhost:3000
 - Backend: localhost:3001
