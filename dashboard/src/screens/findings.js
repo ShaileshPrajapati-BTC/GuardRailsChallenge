@@ -14,7 +14,7 @@ const Findings = (props) => {
         setFetchingStatus('fetched')
       })
     fetchingStatus === 'not_started' && setFetchingStatus('fetching')
-  })
+  }, [findings.length, fetchingStatus, props.match.params.id])
 
   if (fetchingStatus !== 'fetched') {
     return <Spinner className="spinner" animation="border" variant="dark" />

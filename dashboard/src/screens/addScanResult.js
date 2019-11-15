@@ -62,7 +62,7 @@ const AddScanResult = (props) => {
             </Col>
             <Col md="6">
               <Form.Group>
-                <Form.Label className="findings-label" title="Paste your findings JSON here.">Findings <a target="_blank" href="https://github.com/guardrailsio/full-stack-engineer-challenge/blob/master/example-findings.json">See example</a></Form.Label>
+                <Form.Label className="findings-label" title="Paste your findings JSON here.">Findings <a target="_blank" rel="noopener noreferrer" href="https://github.com/guardrailsio/full-stack-engineer-challenge/blob/master/example-findings.json">See example</a></Form.Label>
                 <Field name="findings" value={values.findings} placeholder="Findings" as={TextArea} />
                 {touched.findings && errors.findings && <div className="text-red">{errors.findings}</div>}
               </Form.Group>

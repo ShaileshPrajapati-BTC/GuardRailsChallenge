@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Badge, Spinner } from 'react-bootstrap'
 import { getScanResults } from '../api/scanResult'
-import { statusMapper, formatDateTime, statusColorMapper } from '../utils/index'
+import { statusMapper, formatDateTime, statusColorMapper, checkNullValue } from '../utils/index'
 
 const ScanResultList = (props) => {
   const [results, setResults] = useState([])
@@ -15,7 +15,7 @@ const ScanResultList = (props) => {
         setFetchingStatus('fetched')
       })
     fetchingStatus === 'not_started' && setFetchingStatus('fetching')
-  })
+  }, [results.length, fetchingStatus])
 
   if (fetchingStatus !== 'fetched') {
     return <Spinner className="spinner" animation="border" variant="dark" />
@@ -36,7 +36,7 @@ const ScanResultList = (props) => {
       </thead>
       <tbody>
         {results.length > 0 ? results.map(({ _id, status, repositoryName, findings, queuedAt, scanningAt, finishedAt }) => {
-          const badgeCount = findings && findings.findings && findings.findings.length || false
+          const badgeCount = (findings && findings.findings && findings.findings.length) || false
           return (
             <tr key={_id} >
               <td>{_id}</td>
@@ -47,8 +47,8 @@ const ScanResultList = (props) => {
               </td>
               <td>{repositoryName}</td>
               <td
-                title={badgeCount && "View findings"}
-                className={badgeCount && "findings"}
+                title={checkNullValue(badgeCount, "View findings")}
+                className={checkNullValue(badgeCount, "findings")}
                 onClick={() => badgeCount && props.history.push(`/scan_results/${_id}/findings`)}>
                 {badgeCount && <Badge pill variant="dark">
                   {badgeCount}
