@@ -1,0 +1,25 @@
+version: '2'
+services:
+  server:
+    build:
+      context: ./api/
+    command: /usr/app/node_modules/.bin/nodemon server.js
+    volumes:
+      - ./api/:/usr/app
+      - /usr/app/node_modules
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+  client:
+    build:
+      context: ./dashboard/
+    command: npm start
+    volumes:
+      - ./dashboard/:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      - server
+    ports:
+      - "3000:3000"
