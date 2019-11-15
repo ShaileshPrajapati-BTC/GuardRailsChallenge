@@ -37,7 +37,7 @@ const AddScanResult = (props) => {
           })
       }}
     >
-      {({ values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue, setFieldTouched }) => (
+      {({ values, errors, touched, handleSubmit, setFieldValue, setFieldTouched }) => (
         <Form className="add-scan-form" onSubmit={handleSubmit}>
           <Row>
             <Col md="6">
@@ -47,7 +47,7 @@ const AddScanResult = (props) => {
                   value={values.status}
                   onChange={(item) => setFieldValue('status', item)}
                   options={options}
-                  onMenuClose={() => setFieldTouched("status", true, true)}
+                  onMenuClose={() => !touched.status && setFieldTouched("status", true, true)}
                   error={errors.status}
                   touched={touched.status}
                 />
@@ -62,7 +62,7 @@ const AddScanResult = (props) => {
             </Col>
             <Col md="6">
               <Form.Group>
-                <Form.Label>Findings</Form.Label>
+                <Form.Label className="findings-label" title="Paste your findings JSON here.">Findings <a target="_blank" href="https://github.com/guardrailsio/full-stack-engineer-challenge/blob/master/example-findings.json">See example</a></Form.Label>
                 <Field name="findings" value={values.findings} placeholder="Findings" as={TextArea} />
                 {touched.findings && errors.findings && <div className="text-red">{errors.findings}</div>}
               </Form.Group>
@@ -72,21 +72,24 @@ const AddScanResult = (props) => {
               <DateTime
                 onChange={(datetime) => setFieldValue("queuedAt", datetime)}
                 error={errors.queuedAt}
-                touched={touched.queuedAt} />
+                touched={touched.queuedAt}
+                onBlur={() => !touched.queuedAt && setFieldTouched("queuedAt", true, true)} />
             </Col>
             <Col md="6">
               <Form.Label>Scanning At</Form.Label>
               <DateTime
                 onChange={(datetime) => setFieldValue("scanningAt", datetime)}
                 error={errors.scanningAt}
-                touched={touched.scanningAt} />
+                touched={touched.scanningAt}
+                onBlur={() => !touched.scanningAt && setFieldTouched("scanningAt", true, true)} />
             </Col>
             <Col md="6">
               <Form.Label>Finished At</Form.Label>
               <DateTime
                 onChange={(datetime) => setFieldValue("finishedAt", datetime)}
                 error={errors.finishedAt}
-                touched={touched.finishedAt} />
+                touched={touched.finishedAt}
+                onBlur={() => !touched.finishedAt && setFieldTouched("finishedAt", true, true)} />
             </Col>
             <Col md="6">
               <Button variant="dark" className="submit-btn" type="submit">Submit</Button>
