@@ -11,13 +11,12 @@ This repository contains the solution for the [Gurdrails  Challenge](https://git
 # Prerequisites
 - [Docker](https://docs.docker.com/install/)
 - [Docker compose](https://docs.docker.com/compose/install/)
-- Node version > 11
 
 # Installation
 
 ```
 $ git clone https://github.com/ShaileshPrajapati-BTC/GuardRailsChallenge.git
-$ cd project_directory
+$ cd GuardRailsChallenge
 $ docker-compose build
 $ docker-compose up
 ```
